@@ -12,9 +12,13 @@ public class Player : MonoBehaviour
     public float speed = 1;
     public SpriteRenderer spr;
 
+
+    public int Life = 3;
+
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
+        GameController.Instance.Life = Life;
     }
 
     private void Update()

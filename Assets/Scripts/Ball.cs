@@ -6,6 +6,6 @@ public class Ball : MonoBehaviour
 {
     private void Update()
     {
-        this.transform.position += this.transform.position + Vector3.forward;
+        //this.transform.position += this.transform.position + Vector3.forward;
     }
 }
