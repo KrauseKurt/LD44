@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
@@ -31,11 +29,12 @@ public class StoreManager : MonoBehaviour
     /// </summary>
     public void BuyHeart()
     {
-        if (Pay(PriceHearts[GameController.Hearts]))
+        if (Pay(PriceHearts[GameController.Instance.Hearts]))
         {
-            GameController.Life += 4;
-            GameController.Hearts += 1;
+            GameController.Instance.Life += 4;
+            GameController.Instance.Hearts += 1;
             //GameController.Player.AddLife();
+            GameController.Instance.Hud.HeartsManager();
         }
     }
 
@@ -44,9 +43,9 @@ public class StoreManager : MonoBehaviour
     /// </summary>
     public void BuyUpgrade()
     {
-        if (Pay(PriceUpgrade[GameController.PowerDamage]))
+        if (Pay(PriceUpgrade[GameController.Instance.PowerDamage]))
         {
-            GameController.PowerDamage += 4;
+            GameController.Instance.PowerDamage += 4;
             //GameController.Player.PowerDamage();
         }
     }
@@ -57,9 +56,9 @@ public class StoreManager : MonoBehaviour
     /// <returns>If can to buy</returns>
     private static bool Pay(int cust)
     {
-        if (GameController.Coins > cust)
+        if (GameController.Instance.Coins > cust)
         {
-            GameController.Coins -= cust;
+            GameController.Instance.Coins -= cust;
             return true;
         }
         return false;

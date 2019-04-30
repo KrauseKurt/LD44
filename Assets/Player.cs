@@ -14,9 +14,13 @@ public class Player : MonoBehaviour
     public float speed = 1;
     public SpriteRenderer spr;
 
+
+    public int Life = 3;
+
     private void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
+        GameController.Instance.Life = Life;
     }
 
     private void Update()
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         GameObject obj = Instantiate(projectile,gun.transform.position,gun.transform.rotation,gun.transform);
+        GameController.Instance.DecLife();
+        GameController.Instance.Hud.HeartsManager();
     }
 
     private void DirectionFacing()
