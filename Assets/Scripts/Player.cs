@@ -8,8 +8,6 @@ public class Player : MonoBehaviour
     private Vector3 vecvec;
     private Vector3 mouseVector;
 
-    public GameObject gun;
-    public GameObject projectile;
     public float bilubilu;
     public float speed = 1;
     public SpriteRenderer spr;
@@ -22,12 +20,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         DirectionFacing();
-
-        //Shooting
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
 
         Vector2 movementVec = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
@@ -43,11 +35,6 @@ public class Player : MonoBehaviour
         rbody.MovePosition(rbody.position + movementVec * Time.deltaTime * speed);
 
 
-    }
-
-    private void Shoot()
-    {
-        GameObject obj = Instantiate(projectile,gun.transform.position,gun.transform.rotation,gun.transform);
     }
 
     private void DirectionFacing()
